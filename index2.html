@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+    /*    Задание 2 
+    Создайте страницу с кнопкой, при нажатии по кнопке должен созда
+    ваться параграф с произвольным текстом. После создания 10 
+    параграфов все они должны быть удалены
+    */
+    window.onload = function (){
+            var button = document.getElementById("btn");
+            var counter = 0;
+            button.onclick=function (){
+                var p = document.createElement("p");
+                p.innerHTML = "New Paragraph";
+                document.body.appendChild(p);
+                var body = document.body.childNodes;
+                counter++;
+                if(counter == 10){
+                    for(var i = 0; i<body.length; i++){
+                        if(body[i].nodeName == "P"){
+                            document.body.removeChild(body[i]);
+                            i--;
+                        }
+                    }
+                    counter = 0;
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <input type="button" id="btn" value="newItemAdd">
+    <div id="container"></div>
+</body>
+</html>
